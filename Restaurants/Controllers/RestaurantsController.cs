@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Collections.Generic;
 using System.Collections.Generic;
-using System.Ling;
+using System.Linq;
 using Restaurants.Models;
 
 namespace Restaurants.Controllers
 {
-  public class CategoriesController : Controller
+  public class RestaurantsController : Controller
   {
     private readonly RestaurantsContext _db;
 
@@ -18,7 +18,7 @@ namespace Restaurants.Controllers
 
     public ActionResult Index()
     {
-      List<Restaurant> model = _db.Restaurants.Include(Restaurant => restaurant.Type_of_food).ToList();
+      List<Restaurant> model = _db.Restaurants.Include(Restaurant => restaurant.Cuisine).ToList();
       return View(model);
     }
 
@@ -37,7 +37,7 @@ namespace Restaurants.Controllers
     public ActionResult Edit(int id)
     {
       Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      ViewBag.type_of_foodId = new SelectList(_db.Types_of_food, "Type_of_foodId", "Name");
+      ViewBag.CuisineId = new SelectList(_db.Types_of_food, "CuisineId", "Name");
       return View(thisRestaurant);
     }
 
@@ -55,19 +55,19 @@ namespace Restaurants.Controllers
       return View(thisRestaurant);
     }
 
-    [HttpPost, ActionResult("Delete")]
-    public ActionResult DeleteConfirmed(int id)
-    {
-      Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      _db.Restaurants.Remove(thisRestaurant);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+    // [HttpPost, ActionResult("Delete")]
+    // public ActionResult DeleteConfirmed(int id)
+    // {
+    //   Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    //   _db.Restaurants.Remove(thisRestaurant);
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
 
     [HttpPost]
-    public ActionResult Create(Type_of_food type_of_food)
+    public ActionResult Create(Cuisine cuisine)
     {
-      _db.Types_of_food.Add(type_of_food);
+      _db.Types_of_food.Add(Cuisine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

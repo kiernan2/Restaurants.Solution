@@ -4,14 +4,14 @@ namespace Restaurants.Models
 {
   public class RestaurantsContext : DbContext
   {
-    public virtual DbSet<Category> Categories { get; set; }
-    public virtual DbSet<Item> Item { get; set; }
+    public virtual DbSet<Restaurant> Restaurants { get; set; }
+    public virtual DbSet<Cuisine> Cuisine { get; set; }
 
-    public ToDoListContext(DbContextOptions options) : base(options) { }
+    public RestaurantsContext(DbContextOptions options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.useLazyLoadingProxies();
+      optionsBuilder.UseLazyLoadingProxies();
     }
   }
 }

@@ -1,9 +1,10 @@
 namespace Restaurants.Models
 {
-  public class Restaurants
+  public class Restaurant
   {
     public int RestaurantId { get; set; }
-    public string RestaurantName{ get; set; }
-    public int RestaurantFood{ get; set; }
+    public string RestaurantName { get; set; }
+    public int CuisineId { get; set; }
+    public virtual Cuisine cuisine { get; set; }
   }
 }

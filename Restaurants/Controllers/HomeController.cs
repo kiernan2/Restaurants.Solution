@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Restaurants.Collections
 {
-  public class HomeController : controller
+  public class HomeController : Controller
   {
     [HttpGet("/")]
     public ActionResult Index()
