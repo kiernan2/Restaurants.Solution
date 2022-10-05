@@ -23,40 +23,40 @@ namespace Restaurants.Controllers
 
     public ActionResult Details(int id)
     {
-      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(Cuisine => Cuisine.CuisineId == id);
+      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(cuisine => cuisine.CuisineId == id);
       return View(thisCuisine);
     }
 
     public ActionResult Create()
     {
-      return View;
+      return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Cuisine Cuisine)
+    public ActionResult Create(Cuisine cuisine)
     {
-      _db.Cuisine.Add(type);
+      _db.Cuisine.Add(cuisine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Edit(int id)
     {
-      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(Cuisine => Cuisine.CuisineId == id);
-      return View(thisTCuisine);
+      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      return View(thisCuisine);
     }
 
     [HttpPost]
     public ActionResult Edit(Cuisine cuisine)
     {
-      _db.Entry(Cuisine).State = EntryState.Modified;
+      _db.Entry(cuisine).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(Cuisine => Cuisine.CuisineId);
+      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(cuisine => cuisine.CuisineId == id);
       return View(thisCuisine);
     }
 

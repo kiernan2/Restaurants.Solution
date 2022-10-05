@@ -18,7 +18,7 @@ namespace Restaurants.Controllers
 
     public ActionResult Index()
     {
-      List<Restaurant> model = _db.Restaurants.Include(Restaurant => restaurant.Cuisine).ToList();
+      List<Restaurant> model = _db.Restaurants.Include(restaurant => restaurant.Cuisine).ToList();
       return View(model);
     }
 
@@ -37,14 +37,14 @@ namespace Restaurants.Controllers
     public ActionResult Edit(int id)
     {
       Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      ViewBag.CuisineId = new SelectList(_db.Types_of_food, "CuisineId", "Name");
+      ViewBag.CuisineId = new SelectList(_db.Cuisine, "CuisineId", "Name");
       return View(thisRestaurant);
     }
 
     [HttpPost]
     public ActionResult Edit(Restaurant restaurant)
     {
-      _db.Entry(restaurant).State = EntryState.Modified;
+      _db.Entry(restaurant).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -67,7 +67,7 @@ namespace Restaurants.Controllers
     [HttpPost]
     public ActionResult Create(Cuisine cuisine)
     {
-      _db.Types_of_food.Add(Cuisine);
+      _db.Cuisine.Add(cuisine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

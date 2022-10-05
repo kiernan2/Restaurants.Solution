@@ -8,7 +8,7 @@ namespace Restaurants.Models
     public string CuisineName { get; set; }
     public virtual ICollection<Restaurant> RestaurantsList { get; set; }
     
-    public Restaurant()
+    public Cuisine()
     {
       this.RestaurantsList = new HashSet<Restaurant>();
     }
