@@ -60,13 +60,13 @@ namespace Restaurants.Controllers
       return View(thisCuisine);
     }
 
-    // [HttpPost, ActionResult("Delete")]
-    // public ActionResult DeleteConfirmed(int id)
-    // {
-    //   Cuisine thisCuisine =_db.Cuisine.FirstOrDefault(Cuisine => Cuisine.CuisineId);
-    //   _db.Cuisine.Remove(thisCuisine);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Cuisine thisCuisine = _db.Cuisine.FirstOrDefault(cuisine => cuisine.CuisineId == id);
+      _db.Cuisine.Remove(thisCuisine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
