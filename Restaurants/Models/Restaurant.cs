@@ -5,6 +5,7 @@ namespace Restaurants.Models
     public int RestaurantId { get; set; }
     public string RestaurantName { get; set; }
     public int CuisineId { get; set; }
+    public string RestaurantOwner {get ; set; }
     public virtual Cuisine Cuisine { get; set; }
   }
 }

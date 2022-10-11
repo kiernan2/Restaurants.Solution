@@ -4,14 +4,17 @@
 
 @model Restaurants.Models.Restaurant
 
-<h4>Add a task</h4>
+<h4>Add a Restaurant</h4>
 
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.RestaurantName)
   @Html.TextBoxFor(model => model.RestaurantName)
 
-  @Html.LabelFor(model => model.CuisineId)
+  @Html.LabelFor(model => model.RestaurantOwner)
+  @Html.TextBoxFor(model => model.RestaurantOwner)
+
+  @Html.LabelFor(model => model.Cuisine)
   @Html.DropDownList("CuisineId")
 
   <input type="submit" value="Add new Restaurant" class="btn btn-default"/>
